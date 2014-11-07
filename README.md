@@ -22,11 +22,14 @@ yaml-erlang-python language
 
 ## Examples:
 1. sample.yep:
+2. 
    ```
    cast Value::integer to "String" lexical:
     - io_lib:format("~p", [Value])
    ```
+   
    generates:
+   
    ```
    -module(sample).
    -compile(export_all).
