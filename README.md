@@ -24,16 +24,18 @@ yaml-erlang-python language
 1. sample.yep:
 
    ```
-   cast Value::integer to "String" lexical:
-    - io_lib:format("~p", [Value])
+   lexical cast Value::integer to "string":
+   - io_lib:format("~p", [Value])
+   lexical cast Value::integer to "integer":
+   - Value
    ```
    
-   generates:
+   generates `sample.erl`:
    
    ```
    -module(sample).
    -compile(export_all).
-   -spec cast(Value::integer, Type::string) -> ReturnType.
-   cast(Value, to, "String", lexical) when is_integer(Value) ->
+   -spec lexical_cast(Value::integer, Type::string) -> ReturnType.
+   lexical_cast(Value, to, "string", lexical) when is_integer(Value) ->
       io_lib:format("~p", [Value]).
    ```
