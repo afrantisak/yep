@@ -32,10 +32,12 @@ yaml-erlang-python language
    
    generates `sample.erl`:
    
-   ```
+   ```erlang
    -module(sample).
    -compile(export_all).
    -spec lexical_cast(Value::integer, Type::string) -> ReturnType.
-   lexical_cast(Value, to, "string", lexical) when is_integer(Value) ->
-      io_lib:format("~p", [Value]).
+   lexical_cast(Value, to, "string") when is_integer(Value) ->
+       io_lib:format("~p", [Value]);
+   lexical_cast(Value, to, "integer") when is_integer(Value) ->
+       Value.   
    ```
