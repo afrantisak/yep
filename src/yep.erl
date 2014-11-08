@@ -1,11 +1,6 @@
-%% -*- erlang -*-
-%% usage:
-%%  #!/usr/bin/env escript
-%%  -include("escript_stdin.erl").
-%%  progname() -> "program_name_for_usage_text".
-%%  chunk(Data) -> io:format("Input file:~n~s~n", [Data]).
-main([]) ->
-    read(standard_io, "todo");
+-module(yep).
+-export([main/1]).
+
 main([Filename]) ->
     handle_file(file:open(Filename, read), Filename);
 main(_) ->
@@ -13,14 +8,13 @@ main(_) ->
 
 handle_file({ok, IoDevice}, Filename) ->
     read(IoDevice, Filename),
-    file:close(IoDevice),
-    0;
+    file:close(IoDevice);
 handle_file({error, enoent}, Filename) ->
     io:format("Could not find file ~s~n", [Filename]),
-    1.    
+    halt(1).
 
 usage() ->
-    io:format("usage: ~s <filename (defaults to stdin)>~n", [progname()]),
+    io:format("usage: yep <filename>~n"),
     halt(1).
 
 read(Device, Filename) ->
@@ -34,5 +28,11 @@ chars({error, Reason}, _Device, _Filename) ->
 chars(Data, Device, Filename) ->
     chunk(Data, Filename),
     read(Device, Filename).
+
+chunk(Data, Filename) -> 
+    ok = application:start(yamerl),
+    Yaml = yamerl_constr:string(Data),
+    Erlang = yep_erlang:module(Yaml, Filename),
+    io:format("~s", [Erlang]).
 
 

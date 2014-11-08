@@ -10,7 +10,7 @@ yaml-erlang-python language
 1. I don't like having to keep `-module`, `-export` and `-spec` directives in sync with changing code.
 1. I also like YAML and Python.
 
-Basically I want to write Erlang code that doesn't have any of the fluff that gets in the way of writing code.
+Basically I want to write Erlang code but I don't want to deal with any of the manual reconciliation fluff that gets in the way.
 So this is a simple translation unit that hides the fluff.
 
 ## Goals
