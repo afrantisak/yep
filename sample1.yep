@@ -1,0 +1,7 @@
+#!/usr/bin/env yep
+
+lexical cast Value::integer to "string":
+- io_lib:format("~p", [Value])
+
+lexical cast Value::integer to "integer":
+- Value

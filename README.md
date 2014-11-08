@@ -23,7 +23,7 @@ yaml-erlang-python language
 ## Examples:
 1. sample.yep:
 
-   ```
+   ```yaml
    lexical cast Value::integer to "string":
    - io_lib:format("~p", [Value])
    lexical cast Value::integer to "integer":

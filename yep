@@ -1,0 +1,13 @@
+#!/usr/bin/env escript
+%%! -pa lib/yamerl/ebin -Wall
+
+-include("escript_stdin.erl").
+
+progname() -> "convert yep to erlang".
+
+chunk(Data) -> 
+    ok = application:start(yamerl),
+    Yaml = yamerl_constr:string(Data),
+    io:format("~p~n", [Yaml]).
+
+
