@@ -3,6 +3,16 @@ yep language
 
 yaml-erlang-python language
 
+## Why?
+
+1. I like Erlang.
+1. I don't like messing around with commas and periods when I copy/paste code.
+1. I don't like having to keep the `-module`, '-export' and '-spec' in sync with changing code.
+1. I also like YAML and Python.
+
+Basically I want to write Erlang code that doesn't have any of the Erlang fluff that gets in the way.
+So this is a simple translation unit that hides the fluff.
+
 ## Goals
 1. Code must be valid YAML
 1. Code must translate to Erlang
@@ -35,6 +45,7 @@ yaml-erlang-python language
     ```erlang
     -module(sample).
     -export([lexical_cast]).
+
     -spec lexical_cast(Value::integer, Type::string) -> ReturnType.
     lexical_cast(Value, to, "string") when is_integer(Value) ->
         io_lib:format("~p", [Value]);
