@@ -1,3 +1,3 @@
 all:
-	rebar get-deps compile doc
+	rebar get-deps compile
 
