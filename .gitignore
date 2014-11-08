@@ -1,2 +1,6 @@
 *~
-lib
+ebin/
+lib/
+doc/
+.rebar
+

@@ -1,0 +1,12 @@
+{application, yep,
+ [
+  {description, "YAML Erlang Parser"},
+  {vsn, "1"},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib,
+                  yamerl
+                 ]},
+  {env, []}
+ ]}.

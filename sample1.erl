@@ -1,5 +1,5 @@
 -module(sample).
--compile(export_all).
+-export([lexical_cast]).
 
 -spec lexical_cast(Value::integer, Type::string) -> ReturnType.
 lexical_cast(Value, to, "string") when is_integer(Value) ->

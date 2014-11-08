@@ -1,13 +1,14 @@
 #!/usr/bin/env escript
-%%! -pa lib/yamerl/ebin -Wall
+%% vim: ts=4 sw=4 et ft=erlang
+%%! -pa lib/yamerl/ebin -pa ebin -Wall
 
 -include("escript_stdin.erl").
 
 progname() -> "convert yep to erlang".
 
-chunk(Data) -> 
+chunk(Data, Filename) -> 
     ok = application:start(yamerl),
     Yaml = yamerl_constr:string(Data),
-    io:format("~p~n", [Yaml]).
-
+    Erlang = yep:get_erlang(Yaml, Filename),
+    io:format("~s", [Erlang]).
 
