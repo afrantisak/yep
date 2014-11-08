@@ -20,21 +20,15 @@ Basically I want to write Erlang code but I don't want to deal with any of the m
 So this is a simple translation unit that hides the fluff.
 
 ## Goals
-1. Code must be valid YAML
-1. Code must translate to Erlang
-1. This is a Functional language, not imperative.
-1. convention over configuration.
-1. definition/declaration all in one.
-   1. No header files.  
-   1. optional type specifications must be in-line
-1. No "import" or "include" statements.  
-   1. No separate "export" statements necessary (see above).  
-   2. All functions are public and exported (unless they begin with _)  
+1. Yep code must be valid YAML.  Why?  Because I thought it would be cool and I don't know how to write a low-level parser.
+1. Yep code must be copy/paste-friendly, i.e. no commas or periods required.  Lists/Tuple elements separated by space only.  Expressions separated with newlines only.
+1. Code must translate to Erlang.  All valid Erlang expressions are allowed, minus the commas and periods and function declarations.
+1. No importing or exporting.  Yep should figure it out for you.
+   1. No separate "export" statements necessary.
+   2. All functions are public and exported unless they begin with _  
    3. To reference `function` in `path/to/module.yep` simply say: `path:to:module:function(Args...)`
-1. copy/paste-friendly, i.e. no commas or periods required.  Lists/Tuple elements separated by space only.  expressions separated with newlines only
+1. optional type specifications must be in-line, no separate -spec directives.
 1. first-class string objects enclosed by double-quotes.  They get translated to erlang binaries.
-1. Must be able to have valid erlang expressions inside the yaml.
-1. Python style comments
 
 ## Examples:
 1. sample.yep:
