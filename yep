@@ -9,6 +9,6 @@ progname() -> "convert yep to erlang".
 chunk(Data, Filename) -> 
     ok = application:start(yamerl),
     Yaml = yamerl_constr:string(Data),
-    Erlang = yep:module(Yaml, Filename),
+    Erlang = yep_erlang:module(Yaml, Filename),
     io:format("~s", [Erlang]).
 

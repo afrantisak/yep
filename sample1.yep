@@ -1,8 +1,9 @@
 #!/usr/bin/env yep
+%% vim: ts=4 sw=4 et ft=erlang
 
-lexical cast Value::integer to "string":
+lexical cast Value to "string":
 - io_lib:format("~p", [Value])
 
-lexical cast Value::integer to "integer":
+lexical cast Value to "integer":
 - io_lib:format("test")
 - Value
