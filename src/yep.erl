@@ -2,30 +2,30 @@
 -export([main/1]).
 
 main([Filename]) ->
-    handle_file(file:open(Filename, read), Filename);
+    handle_file_open(file:open(Filename, read), Filename);
 main(_) ->
     usage().
-
-handle_file({ok, IoDevice}, Filename) ->
-    read(IoDevice, Filename),
-    file:close(IoDevice);
-handle_file({error, enoent}, Filename) ->
-    io:format("Could not find file ~s~n", [Filename]),
-    halt(1).
 
 usage() ->
     io:format("usage: yep <filename>~n"),
     halt(1).
 
-read(Device, Filename) ->
-    chars(io:get_chars(Device, '', 1024 * 1024), Device, Filename).
+handle_file_open({ok, IoDevice}, Filename) ->
+    read(IoDevice, Filename),
+    file:close(IoDevice);
+handle_file_open({error, enoent}, Filename) ->
+    io:format("Could not find file ~s~n", [Filename]),
+    halt(1).
 
-chars(eof, _Device, _Filename) ->
+read(Device, Filename) ->
+    handle_get_chars(io:get_chars(Device, '', 1024 * 1024), Device, Filename).
+
+handle_get_chars(eof, _Device, _Filename) ->
     ok;
-chars({error, Reason}, _Device, _Filename) ->
+handle_get_chars({error, Reason}, _Device, _Filename) ->
     io:format("ERROR: ~p~n", [Reason]),
     {error, Reason};
-chars(Data, Device, Filename) ->
+handle_get_chars(Data, Device, Filename) ->
     chunk(Data, Filename),
     read(Device, Filename).
 
