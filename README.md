@@ -33,7 +33,7 @@ So this is a simple translation unit that hides the fluff.
 1. first-class string objects enclosed by double-quotes.  They get translated to erlang binaries.
 
 ## Examples:
-1. `$ ./yep sample1.yep`:
+1. `$ cat sample1.yep`:
 
     ```yaml
     lexical cast Value::integer to "string":
@@ -42,7 +42,7 @@ So this is a simple translation unit that hides the fluff.
     - Value
     ```
    
-    generates:
+    `$ ./yep sample1.yep`:
    
     ```erlang
     -module(sample).
