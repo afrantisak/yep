@@ -2,8 +2,7 @@
 -export([module/2]).
 
 module(Yaml, Filename) ->
-    Erlang = header(Yaml, Filename),
-    Erlang ++ functions(Yaml).
+    header(Yaml, Filename) ++ functions(Yaml).
 
 functions([Yaml]) ->
     [function(Function) || Function <- Yaml].
@@ -14,8 +13,11 @@ function({Declaration, Definition}) ->
 declaration(Declaration) ->
     io_lib:format("~s", [Declaration]).
 
-definition(Definition) ->
-    io_lib:format("~s", [Definition]).
+definition(Expressions) ->
+    string:join([expression(Expression) || Expression <- Expressions], ",\n").
+
+expression(Expression) ->
+    io_lib:format("    ~s", [Expression]).
 
 header(_Yaml, Filename) ->
     print:module(module_name(Filename)) ++ 
