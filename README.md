@@ -5,9 +5,11 @@ yaml-erlang-python language
 
 ## Usage:
 
+    ```sh
     make
     make install # optional, installs to /usr/local/bin
     ./yep sample1.yep
+    ```
 
 ## Why?
 
@@ -41,6 +43,10 @@ So this is a simple translation unit that hides the fluff.
     ```
    
     generates `sample.erl`:
+
+    ```sh
+    ./yep sample1.yep
+    ```
    
     ```erlang
     -module(sample).
