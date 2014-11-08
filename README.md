@@ -3,6 +3,12 @@ yep language
 
 yaml-erlang-python language
 
+## Usage:
+
+    make
+    make install # optional, installs to /usr/local/bin
+    ./yep sample1.yep
+
 ## Why?
 
 1. I like Erlang.
