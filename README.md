@@ -7,10 +7,10 @@ yaml-erlang-python language
 
 1. I like Erlang.
 1. I don't like messing around with commas and periods when I copy/paste code.
-1. I don't like having to keep the `-module`, '-export' and '-spec' in sync with changing code.
+1. I don't like having to keep `-module`, `-export` and `-spec` directives in sync with changing code.
 1. I also like YAML and Python.
 
-Basically I want to write Erlang code that doesn't have any of the Erlang fluff that gets in the way.
+Basically I want to write Erlang code that doesn't have any of the fluff that gets in the way of writing code.
 So this is a simple translation unit that hides the fluff.
 
 ## Goals
